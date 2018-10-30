@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 const baseURL = process.env.ENDPOINT;
 
@@ -13,40 +12,33 @@ const getForecastFromApi = async () => {
 
   return {};
 };
-
+function formateTime(text) {
+  return text.slice(11, 16);
+}
 export default class ForecastContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      forecast: null
+      forecast: null,
     };
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     const forecast = await getForecastFromApi();
-    this.setState({ forecast: forecast });
+    this.setState({ forecast });
   }
-
-  formateTime(text) {
-
-    return text.slice(11, 16)
-  }
-
 
   render() {
     const { forecast } = this.state;
-    console.log(forecast)
-    const items = forecast ? forecast.map(data => {
-      return <div className="icon-container">
-        <div className="forecast-icon" key={data.dt}>
+    const items = forecast ? forecast.map(data =>
+      (<div className="icon-container" key={data.dt}>
+        <div className="forecast-icon" >
           {data.weather[0].icon && <img alt={data.weather[0].main} src={`/img/${data.weather[0].icon.slice(0, -1)}.svg`} />}
         </div>
-        <div className='text-forecast'>{this.formateTime(data.dt_txt)}</div>
-      </div>
-    }) : [];
-
-    console.log(items)
+        <div className="text-forecast">{formateTime(data.dt_txt)}</div>
+      </div>)
+    ) : [];
 
     return (
       <div className="forecast-container">

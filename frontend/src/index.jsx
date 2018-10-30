@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ForecastContainer from "./ForecastContainer";
+import ForecastContainer from './ForecastContainer';
 
 const baseURL = process.env.ENDPOINT;
 
@@ -21,7 +21,6 @@ class Weather extends React.Component {
 
     this.state = {
       icon: '',
-      forecast: null
     };
   }
 
@@ -36,7 +35,7 @@ class Weather extends React.Component {
     return (
       <div className="main">
         <div className="weather-container">
-          {icon && <img className="icon" src={`/img/${icon}.svg`} />}
+          {icon && <img className="icon" alt={icon} src={`/img/${icon}.svg`} />}
         </div>
         <ForecastContainer />
       </div>
