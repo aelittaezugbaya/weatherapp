@@ -1,14 +1,13 @@
-version: '2'
+version: '3'
 services:
   server:
     build:
       context: ./backend/
-    command: npm start
+    command: npm run dev
     volumes:
-      - /backend/node_modules
+      - ./backend:/weatherapp_backend
     ports:
       - "9000:9000"
-    # env_file: ./server/.env # TODO - uncomment this to auto-load your .env file!
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
@@ -17,7 +16,7 @@ services:
       context: ./frontend/
     command: npm start
     volumes:
-      - /frontend/node_modules
+      - ./frontend:/weatherapp_frontend
     depends_on:
       - server
     ports:
