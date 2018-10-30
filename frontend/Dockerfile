@@ -1,8 +1,8 @@
 FROM node:10.6 
 
-RUN mkdir -p /frontend
-WORKDIR /frontend
-COPY . /frontend
+RUN mkdir -p /weatherapp_frontend
+WORKDIR /weatherapp_frontend
+COPY . /weatherapp_frontend
 
 RUN npm install
 

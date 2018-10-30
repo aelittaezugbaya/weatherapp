@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ForecastContainer from "./ForecastContainer";
 
 const baseURL = process.env.ENDPOINT;
 
@@ -19,21 +20,25 @@ class Weather extends React.Component {
     super(props);
 
     this.state = {
-      icon: "",
+      icon: '',
+      forecast: null
     };
   }
 
   async componentWillMount() {
     const weather = await getWeatherFromApi();
-    this.setState({icon: weather.icon.slice(0, -1)});
+    this.setState({ icon: weather.icon.slice(0, -1) });
   }
 
   render() {
     const { icon } = this.state;
 
     return (
-      <div className="icon">
-        { icon && <img src={`/img/${icon}.svg`} /> }
+      <div className="main">
+        <div className="weather-container">
+          {icon && <img className="icon" src={`/img/${icon}.svg`} />}
+        </div>
+        <ForecastContainer />
       </div>
     );
   }

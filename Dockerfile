@@ -1,4 +1,4 @@
-FROM node:FROM node:10.6 
+FROM node:10.6 
 
 # Setup and build the client
 
@@ -6,14 +6,14 @@ WORKDIR frontend/
 COPY frontend/package*.json ./
 RUN npm install 
 COPY frontend/ ./
-RUN npm run build
+RUN npm build
 
 
 # Setup the server
 
-WORKDIR beckend/
+WORKDIR backend/
 COPY backend/package*.json ./
-RUN npm install -
+RUN npm install
 COPY backend/ ./
 
 ENV PORT 9000

@@ -3,7 +3,7 @@ services:
   server:
     build:
       context: ./backend/
-    command: ./node_modules/.bin/nodemon src/index.js
+    command: npm start
     volumes:
       - /backend/node_modules
     ports:
