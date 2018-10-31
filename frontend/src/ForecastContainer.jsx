@@ -31,7 +31,7 @@ export default class ForecastContainer extends React.Component {
   render() {
     const { forecast } = this.state;
     const items = forecast ? forecast.map(data =>
-      (<ForecastItem forecast = {data}/>)
+      (<ForecastItem forecast={data} key={data.dt} />)
     ) : [];
 
     return (
