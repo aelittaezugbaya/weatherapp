@@ -1,6 +1,5 @@
 FROM node:10.6 
 
-RUN mkdir -p /weatherapp_frontend
 WORKDIR /weatherapp_frontend
 COPY . /weatherapp_frontend
 

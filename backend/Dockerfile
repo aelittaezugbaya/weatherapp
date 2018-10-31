@@ -1,8 +1,7 @@
 FROM node:10.6 
 
-RUN mkdir -p /weatherapp_backend
 WORKDIR /weatherapp_backend
-COPY . ./
+COPY . /weatherapp_backend
 
 RUN npm install
 
